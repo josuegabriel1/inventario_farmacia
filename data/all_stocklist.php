@@ -135,7 +135,12 @@ $stockList = $stock->all_stockList();
 <!-- for the datatable of employee -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myTable-stocklist').DataTable();
+        $('#myTable-stocklist').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+
+            }
+        });
     });
 
 function editarr(arra){

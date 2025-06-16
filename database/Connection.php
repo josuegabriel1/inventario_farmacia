@@ -13,7 +13,7 @@ class Connection {
 			$this->datab->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->transaction = $this->datab;
 			$this->datab->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-			// echo 'Connected Successfully!!!';
+			// echo 'Conectado exitosamente!!!';
 		} catch (PDOException $e) {
 			throw new Exception($e->getMessage());
 		}

@@ -1,7 +1,7 @@
-//for admin login
+//para iniciar sesión como administrador
 $(document).on('submit', '#login-form', function(event) {
 		event.preventDefault();
-		/* Act on the event */
+		/* Actuar sobre el evento */
 
 		var un = $('input[id=un]');
 		var pwd = $('input[id=pwd]');
@@ -33,10 +33,10 @@ $(document).on('submit', '#login-form', function(event) {
 
 	});
 
-//modal_student form
+//formulario modal_student
 $(document).on('submit', '#student-form', function(event) {
 	event.preventDefault();
-	/* Act on the event */
+	/* Actuar sobre el evento */
 	var validate = "";
 	var form_student = new Array(
 				$('input[id=stud_id]'),
@@ -54,7 +54,7 @@ $(document).on('submit', '#student-form', function(event) {
 			//input have no data
 			form_student[i].parent().parent().addClass('has-error');
 		}else{
-			//remove red color or success
+			//eliminar el color rojo con éxito
 			form_student[i].parent().parent().removeClass('has-error');
 			data[i] = form_student[i].val();
 			validate += i;
@@ -83,14 +83,14 @@ $(document).on('submit', '#student-form', function(event) {
 						alert('System Error: L72+');
 					}
 				});
-		}//end vlaidate
+		}//finalizar validar
 
-	}//end for
+	}
 
 });
 
 
-//display students table
+//mostrar la tabla de los estudiantes
 function showAllStudents()
 {
 	$.ajax({
@@ -104,18 +104,18 @@ function showAllStudents()
 			}
 		});
 }
-showAllStudents();//display all students
+showAllStudents();//Mostrar todos los estudiantes
 
-//remove student
+//eliminar estudiante
 var sid;
 function removeStudent(stud_id){
 	sid = stud_id;
 	$('#modal-confirmation').modal('show');
-	// $('#remove-stud-msg').find('h1').text('Confirm Delete?!');
-}//end function removeStudent
+	// $('#remove-stud-msg').find('h1').text('Confirmar Eliminación?!');
+}//función final removeStudent
 
 $('#confirm-remove-stud').click(function(event) {
-	/* Act on the event */
+	/* actuar sobre el evento*/
 	// console.log(sid);//id na e remove
 	$.ajax({
 			url: '../data/remove_student.php',
@@ -136,12 +136,12 @@ $('#confirm-remove-stud').click(function(event) {
 });
 
 
-//open update modal
+//abrir modo de actualización
 function openEdit(stud_id)
 {
 	$('#modal-update-student').modal('show');
 
-	//get id val and fill it to the modal
+	//Obtener id val y llenarlo al modal
 	$.ajax({
 			url: '../data/get_student.php',
 			type: 'post',
@@ -167,12 +167,12 @@ function openEdit(stud_id)
 
 	
 
-}//end openEdit
+}
 
-//get the value sa upt modal
+//obtener el valor upt modal
 $(document).on('submit', '#form-update-student', function(event) {
 	event.preventDefault();
-	/* Act on the event */
+	/* Actuar sobre el evento */
 	var validate = "";
 	var form_data = new Array(
 			$('input[id=stud_id-upt]'),
@@ -192,8 +192,8 @@ $(document).on('submit', '#form-update-student', function(event) {
 			form_data[i].parent().parent().removeClass('has-error');
 			validate += i;
 			data[i] = form_data[i].val();
-		}//
-	}//end for
+		}
+	}
 
 	if(validate == "01234567"){
 			$.ajax({
@@ -219,13 +219,13 @@ $(document).on('submit', '#form-update-student', function(event) {
 						alert('Error: L207+');
 					}
 				});
-		}//end validate
-});//end submit update student
+		}//finalizar validacion
+});//finalizar enviar actualizar estudiante
 
 
-//fill changepass modal
+//rellenar el modal de cambio de pase
 $('#changepass-button').click(function(event) {
-	/* Act on the event */
+	/* Actuar sobre el evento */
 	$.ajax({
 			url: '../data/get_logged_user.php',
 			type: 'post',
@@ -239,10 +239,10 @@ $('#changepass-button').click(function(event) {
 		});
 });
 
-//changepass
+//cambio de contraseña
 $(document).on('submit', '#form-changepassword', function(event) {
 	event.preventDefault();
-	/* Act on the event */
+	/* Actuar sobre el evento */
 	var validate = "";
 	var form_data = new Array(
 				$('input[id=change-username]'),
@@ -258,11 +258,11 @@ $(document).on('submit', '#form-changepassword', function(event) {
 			data[i] = form_data[i].val();
 			validate += i;
 		}
-	}//end for
+	}
 
 	if(validate == "012"){
 		if(data[1] == data[2]){
-			// alert('Password Match!');
+			// alert('¡Coincidencia de contraseña!');
 			$.ajax({
 					url: '../data/update_password.php',
 					type: 'post',
@@ -274,7 +274,7 @@ $(document).on('submit', '#form-changepassword', function(event) {
 							$('#modal-changepass').modal('hide');
 							$('#modal-message').find('.modal-body').text(data.msg);
 							$('#modal-message').modal('show');
-						}//end data.valid
+						}//datos finales.válidos
 					},
 					error: function(){
 						alert('Error: L274+');
@@ -286,11 +286,11 @@ $(document).on('submit', '#form-changepassword', function(event) {
 			}
 			alert('Password Not Match!');
 		}
-	}//end validate
+	}//finalizar validacion
 
-});//end changepass
+});//finalizar el cambio
 
-// show all election
+// mostrar todas las elecciones
 function showAllElection()
 {
 	$.ajax({
@@ -306,12 +306,11 @@ function showAllElection()
 		});
 }
 showAllElection();
-//end showAllElection
+//Fin de mostrarTodas las elecciones
 
-//new party
 $(document).on('submit', '#form-party', function(event) {
 	event.preventDefault();
-	/* Act on the event */
+	/* Actuar sobre el evento */
     var validate = "";
     var name = $('input[id=party-name]');
     if(name.val() == ""){
@@ -345,10 +344,10 @@ $(document).on('submit', '#form-party', function(event) {
     				alert('Error: L340+');
     			}
     		});
-    }//end validate
-});	//end new party submite
+    }//finalizar validacion
+});	
 
-//show all party
+//
 function showAllParty()
 {
 	$.ajax({
@@ -361,7 +360,7 @@ function showAllParty()
 				alert('Error: L368+');
 			}//
 		});
-}//edn function showAllParty
+}//
 showAllParty();
 //end show all party
 
@@ -372,7 +371,7 @@ function confirmDeleteParty(party_id){
 	$('#modal-confirmation').modal('show');
 }
 $('.confirm-party').click(function(event) {
-	/* Act on the event */
+	/* Actuar sobre el evento */
 	$.ajax({
 			url: '../data/delete_party.php',
 			type: 'post',
@@ -388,8 +387,8 @@ $('.confirm-party').click(function(event) {
 				alert('Error: L386+');
 			}
 		});
-});//end confirmParty
-//end confirmDeleteParty
+});//finalizar confirmacion 
+
 
 
 function getStud(id){
@@ -407,7 +406,7 @@ function getStud(id){
 				alert('Error: ');
 			}
 		});
-}//end getStud
+}//finalizar getStud
 var rid;
 function run(stud_id)
 {
@@ -415,9 +414,9 @@ function run(stud_id)
 	getStud(rid);
 	$('#modal-run').modal('show');
 }
-//end function run
+//ejecutar función final
 
-//form run modal
+//formulario de ejecución modal
 $(document).on('submit', '#form-run', function(event) {
 	event.preventDefault();
 	
@@ -435,7 +434,7 @@ $(document).on('submit', '#form-run', function(event) {
 			validate += i;
 			data[i] = form_data[i].val();
 		}
-	}//end for
+	}
 	
 	data[i] = rid;
 
@@ -460,15 +459,15 @@ $(document).on('submit', '#form-run', function(event) {
 							alert('Error: L447+');
 						}
 					});		
-	}//end validate
+	}
 
-});//end submit run
+});
 
 
-//formelection
+//formar elección
 $(document).on('submit', '#form-election', function(event) {
 	event.preventDefault();
-	/* Act on the event */
+	/* Actuar sobre el evento */
 	var date = $('#elec-date').val();
 	if(date == ""){
 		alert('Seleccione la fecha de la elección!');
@@ -494,14 +493,14 @@ $(document).on('submit', '#form-election', function(event) {
 					alert('Error:  L481+');
 				}
 			});
-	}//end if else
+	}
 });
-//end formelection
 
 
-//confirm end election
+
+//confirmar mi eleccion
 $('#end-election').click(function(event) {
-	/* Act on the event */
+	/* Actuar sobre el evento */
 	$('#modal-confirmation').find('.modal-title').text('¿Seguro que quieres terminar la elección?');
 	$('#modal-confirmation').modal('show');
 });
@@ -518,7 +517,7 @@ $('.confirm-election').click(function(event) {
 			},
 			success: function (data) {
 				if(data.valid == true){
-					showAllElection();//update table and status
+					showAllElection();//actualizar tabla y estado
 				}
 				$('#modal-message').find('.modal-body').text(data.msg);
 				$('#modal-message').modal('show');
@@ -527,7 +526,7 @@ $('.confirm-election').click(function(event) {
 				alert('Error: L517+');
 			}
 		});
-});//confirm end election
+});
 
 function viewResult(elec_id){
 	// console.log(elec_id);
@@ -574,4 +573,4 @@ function viewParty(pid)
 				alert('Error: L569+');
 			}
 		});
-}//end viewParty
+}

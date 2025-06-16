@@ -35,7 +35,12 @@
 <!-- for the datatable of employee -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myTable-stock').DataTable();
+        $('#myTable-stock').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+
+            }
+        });
     });
 </script>
 

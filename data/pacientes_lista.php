@@ -35,10 +35,11 @@
                     <td><?= $p['tratamiento']; ?></td>
                     <td>
 
-                        <input type="button" class="btn btn-success btn-sm" value="Ver" onclick="a = <?php echo $p['id']; ?>; modificar(a)">
-                        <input type="button" class="btn btn-danger btn-sm" value="Borrar" onclick="a = <?php echo $p['id']; ?>; confirmar(a)">
-                        <input type="button" class="btn btn-warning btn-sm" value="Reporte" onclick="a = <?php echo $p['id']; ?>; imprimir(a)">
-
+                        <div class="d-flex justify-content-center gap-2" style="min-width: 240px;">
+                          <button class="btn btn-success btn-sm flex-fill" onclick="a = <?= $p['id']; ?>; modificar(a)">Ver</button>
+                          <button class="btn btn-danger btn-sm flex-fill" onclick="a = <?= $p['id']; ?>; confirmar(a)">Borrar</button>
+                          <button class="btn btn-warning btn-sm flex-fill" onclick="a = <?= $p['id']; ?>; imprimir(a)">Reporte</button>
+                        </div>
 
                     </td>
                 </tr>
@@ -58,7 +59,12 @@
 <!-- for the datatable of employee -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myTable-stock').DataTable();
+        $('#myTable-stock').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+
+            }
+        });
     });
 
 

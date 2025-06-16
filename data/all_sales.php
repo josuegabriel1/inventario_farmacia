@@ -62,7 +62,12 @@ $dailySales = $sales->daily_sales($date);
 <!-- for the datatable of employee -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myTable-sales').DataTable();
+        $('#myTable-sales').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+
+            }
+        });
     });
 </script>
 
